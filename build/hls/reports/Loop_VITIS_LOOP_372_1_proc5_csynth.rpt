@@ -1,0 +1,162 @@
+
+
+================================================================
+== Vitis HLS Report for 'entry_proc'
+================================================================
+* Date:           Sat Oct 24 22:52:38 2026
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        dehaze_ip
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.268 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|      0 ns|      0 ns|    0|    0|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|      2|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       -|      -|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|     72|    -|
+|Register         |        -|    -|      35|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|      35|     74|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|      ~0|     ~0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |ap_block_state1  |        or|   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------+----+-----------+-----+-----------+
+    |          Name         | LUT| Input Size| Bits| Total Bits|
+    +-----------------------+----+-----------+-----+-----------+
+    |ap_done                |   9|          2|    1|          2|
+    |ctrl_blk_n             |   9|          2|    1|          2|
+    |ctrl_reg_c_blk_n       |   9|          2|    1|          2|
+    |params_blk_n           |   9|          2|    1|          2|
+    |params_c_blk_n         |   9|          2|    1|          2|
+    |real_start             |   9|          2|    1|          2|
+    |return_r               |   9|          2|   32|         64|
+    |threshold_reg_c_blk_n  |   9|          2|    1|          2|
+    +-----------------------+----+-----------+-----+-----------+
+    |Total                  |  72|         16|   39|         78|
+    +-----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------+----+----+-----+-----------+
+    |      Name      | FF | LUT| Bits| Const Bits|
+    +----------------+----+----+-----+-----------+
+    |ap_CS_fsm       |   1|   0|    1|          0|
+    |ap_done_reg     |   1|   0|    1|          0|
+    |return_r_preg   |  32|   0|   32|          0|
+    |start_once_reg  |   1|   0|    1|          0|
+    +----------------+----+----+-----+-----------+
+    |Total           |  35|   0|   35|          0|
+    +----------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------------+-----+-----+------------+-----------------+--------------+
+|            RTL Ports           | Dir | Bits|  Protocol  |  Source Object  |    C Type    |
++--------------------------------+-----+-----+------------+-----------------+--------------+
+|ap_clk                          |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_rst                          |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_start                        |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|start_full_n                    |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_done                         |  out|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_continue                     |   in|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_idle                         |  out|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|ap_ready                        |  out|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|start_out                       |  out|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|start_write                     |  out|    1|  ap_ctrl_hs|       entry_proc|  return value|
+|return_r                        |  out|   32|     ap_none|         return_r|       pointer|
+|params_dout                     |   in|   32|     ap_fifo|           params|       pointer|
+|params_num_data_valid           |   in|    3|     ap_fifo|           params|       pointer|
+|params_fifo_cap                 |   in|    3|     ap_fifo|           params|       pointer|
+|params_empty_n                  |   in|    1|     ap_fifo|           params|       pointer|
+|params_read                     |  out|    1|     ap_fifo|           params|       pointer|
+|params_c_din                    |  out|   24|     ap_fifo|         params_c|       pointer|
+|params_c_num_data_valid         |   in|    3|     ap_fifo|         params_c|       pointer|
+|params_c_fifo_cap               |   in|    3|     ap_fifo|         params_c|       pointer|
+|params_c_full_n                 |   in|    1|     ap_fifo|         params_c|       pointer|
+|params_c_write                  |  out|    1|     ap_fifo|         params_c|       pointer|
+|ctrl_dout                       |   in|   32|     ap_fifo|             ctrl|       pointer|
+|ctrl_num_data_valid             |   in|    3|     ap_fifo|             ctrl|       pointer|
+|ctrl_fifo_cap                   |   in|    3|     ap_fifo|             ctrl|       pointer|
+|ctrl_empty_n                    |   in|    1|     ap_fifo|             ctrl|       pointer|
+|ctrl_read                       |  out|    1|     ap_fifo|             ctrl|       pointer|
+|ctrl_reg_c_din                  |  out|   32|     ap_fifo|       ctrl_reg_c|       pointer|
+|ctrl_reg_c_num_data_valid       |   in|    2|     ap_fifo|       ctrl_reg_c|       pointer|
+|ctrl_reg_c_fifo_cap             |   in|    2|     ap_fifo|       ctrl_reg_c|       pointer|
+|ctrl_reg_c_full_n               |   in|    1|     ap_fifo|       ctrl_reg_c|       pointer|
+|ctrl_reg_c_write                |  out|    1|     ap_fifo|       ctrl_reg_c|       pointer|
+|threshold_reg_c_din             |  out|   32|     ap_fifo|  threshold_reg_c|       pointer|
+|threshold_reg_c_num_data_valid  |   in|    2|     ap_fifo|  threshold_reg_c|       pointer|
+|threshold_reg_c_fifo_cap        |   in|    2|     ap_fifo|  threshold_reg_c|       pointer|
+|threshold_reg_c_full_n          |   in|    1|     ap_fifo|  threshold_reg_c|       pointer|
+|threshold_reg_c_write           |  out|    1|     ap_fifo|  threshold_reg_c|       pointer|
++--------------------------------+-----+-----+------------+-----------------+--------------+
+

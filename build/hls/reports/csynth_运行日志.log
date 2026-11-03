@@ -1,0 +1,326 @@
+
+
+================================================================
+== Synthesis Summary Report of 'dehaze'
+================================================================
++ General Information: 
+    * Date:           Sat Oct 24 22:52:49 2026
+    * Version:        2022.2 (Build 3670227 on Oct 13 2022)
+    * Project:        dehaze_ip
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +--------------------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+---------+---------+------------+------------+-----+
+    |                         Modules                        | Issue|      | Latency |  Latency  | Iteration|         |  Trip  |          |         |         |            |            |     |
+    |                         & Loops                        | Type | Slack| (cycles)|    (ns)   |  Latency | Interval|  Count | Pipelined|  BRAM   |   DSP   |     FF     |     LUT    | URAM|
+    +--------------------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+---------+---------+------------+------------+-----+
+    |+ dehaze*                                               |     -|  0.00|   934980|  9.350e+06|         -|   934975|       -|  dataflow|  13 (4%)|  10 (4%)|   5109 (4%)|  7392 (13%)|    -|
+    | + Loop_VITIS_LOOP_372_1_proc5                          |     -|  3.27|   921602|  9.216e+06|         -|   921602|       -|        no|        -|        -|    47 (~0%)|   105 (~0%)|    -|
+    |  o VITIS_LOOP_372_1                                    |     -|  7.30|   921600|  9.216e+06|         2|        1|  921600|       yes|        -|        -|           -|           -|    -|
+    | + entry_proc9                                          |     -|  3.67|        0|      0.000|         -|        0|       -|        no|        -|        -|     3 (~0%)|    38 (~0%)|    -|
+    | + dehaze_core*                                         |     -|  0.00|   923609|  9.236e+06|         -|   923609|       -|  dataflow|   8 (2%)|   8 (3%)|   2626 (2%)|   3698 (6%)|    -|
+    |  + entry_proc                                          |     -|  0.03|        0|      0.000|         -|        0|       -|        no|        -|        -|    35 (~0%)|    74 (~0%)|    -|
+    |  + dark_window                                         |     -|  0.00|   923608|  9.236e+06|         -|   923608|       -|        no|   6 (2%)|        -|  1022 (~0%)|   1158 (2%)|    -|
+    |   + dark_window_Pipeline_WINDOW_BYPASS                 |     -|  0.00|   921602|  9.216e+06|         -|   921602|       -|        no|        -|        -|    23 (~0%)|   101 (~0%)|    -|
+    |    o WINDOW_BYPASS                                     |     -|  7.30|   921600|  9.216e+06|         2|        1|  921600|       yes|        -|        -|           -|           -|    -|
+    |   + dark_window_Pipeline_WINDOW_ROWS_WINDOW_COLS       |     -|  0.11|   923607|  9.236e+06|         -|   923607|       -|        no|        -|        -|   993 (~0%)|    984 (1%)|    -|
+    |    o WINDOW_ROWS_WINDOW_COLS                           |     -|  7.30|   923605|  9.236e+06|         6|        1|  923601|       yes|        -|        -|           -|           -|    -|
+    |  + restore_stream                                      |     -|  0.00|   921645|  9.216e+06|         -|   921645|       -|        no|  2 (~0%)|   8 (3%)|   1172 (1%)|   2132 (4%)|    -|
+    |   + restore_stream_Pipeline_RESTORE_BYPASS             |     -|  0.00|   921602|  9.216e+06|         -|   921602|       -|        no|        -|        -|    23 (~0%)|   101 (~0%)|    -|
+    |    o RESTORE_BYPASS                                    |     -|  7.30|   921600|  9.216e+06|         2|        1|  921600|       yes|        -|        -|           -|           -|    -|
+    |   + restore_stream_Pipeline_RESTORE_ROWS_RESTORE_COLS  |     -|  0.02|   921612|  9.216e+06|         -|   921612|       -|        no|  1 (~0%)|   4 (1%)|   753 (~0%)|   1119 (2%)|    -|
+    |    o RESTORE_ROWS_RESTORE_COLS                         |     -|  7.30|   921610|  9.216e+06|        12|        1|  921600|       yes|        -|        -|           -|           -|    -|
+    |   + restore_stream_Pipeline_VITIS_LOOP_182_2           |     -|  0.10|       18|    180.000|         -|       18|       -|        no|        -|        -|    82 (~0%)|   242 (~0%)|    -|
+    |    o VITIS_LOOP_182_2                                  |     -|  7.30|       16|    160.000|         2|        1|      16|       yes|        -|        -|           -|           -|    -|
+    | + sobel_core                                           |     -|  0.00|   934974|  9.350e+06|         -|   934974|       -|        no|   5 (1%)|  2 (~0%)|   1579 (1%)|   2513 (4%)|    -|
+    |  + sobel_core_Pipeline_VITIS_LOOP_253_1                |     -|  0.00|   921602|  9.216e+06|         -|   921602|       -|        no|        -|        -|    23 (~0%)|   101 (~0%)|    -|
+    |   o VITIS_LOOP_253_1                                   |     -|  7.30|   921600|  9.216e+06|         2|        1|  921600|       yes|        -|        -|           -|           -|    -|
+    |  + sobel_core_Pipeline_VITIS_LOOP_263_2                |     -|  2.17|     1282|  1.282e+04|         -|     1282|       -|        no|        -|        -|    13 (~0%)|    50 (~0%)|    -|
+    |   o VITIS_LOOP_263_2                                   |     -|  7.30|     1280|  1.280e+04|         1|        1|    1280|       yes|        -|        -|           -|           -|    -|
+    |  + sobel_core_Pipeline_VITIS_LOOP_318_5                |     -|  0.17|     1285|  1.285e+04|         -|     1285|       -|        no|        -|        -|   426 (~0%)|    565 (1%)|    -|
+    |   o VITIS_LOOP_318_5                                   |     -|  7.30|     1283|  1.283e+04|         5|        1|    1280|       yes|        -|        -|           -|           -|    -|
+    |  o VITIS_LOOP_272_3                                    |     -|  7.30|   932400|  9.324e+06|      1295|        -|     720|        no|        -|        -|           -|           -|    -|
+    |   + sobel_core_Pipeline_VITIS_LOOP_276_4               |     -|  0.08|     1289|  1.289e+04|         -|     1289|       -|        no|        -|  2 (~0%)|   822 (~0%)|    743 (1%)|    -|
+    |    o VITIS_LOOP_276_4                                  |     -|  7.30|     1287|  1.287e+04|         9|        1|    1280|       yes|        -|        -|           -|           -|    -|
+    | + Loop_VITIS_LOOP_379_2_proc6                          |     -|  0.37|   921603|  9.216e+06|         -|   921603|       -|        no|        -|        -|    47 (~0%)|   211 (~0%)|    -|
+    |  o VITIS_LOOP_379_2                                    |     -|  7.30|   921601|  9.216e+06|         3|        1|  921600|       yes|        -|        -|           -|           -|    -|
+    +--------------------------------------------------------+------+------+---------+-----------+----------+---------+--------+----------+---------+---------+------------+------------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++------------+------------+---------------+--------+----------+
+| Interface  | Data Width | Address Width | Offset | Register |
++------------+------------+---------------+--------+----------+
+| s_axi_CTRL | 32         | 5             | 16     | 0        |
++------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++------------+---------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface  | Register      | Offset | Width | Access | Description                      | Bit Fields                                                           |
++------------+---------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_CTRL | CTRL          | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_CTRL | GIER          | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_CTRL | IP_IER        | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_CTRL | IP_ISR        | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_CTRL | ctrl_reg      | 0x10   | 32    | W      | Data signal of ctrl_reg          |                                                                      |
+| s_axi_CTRL | threshold_reg | 0x18   | 32    | W      | Data signal of threshold_reg     |                                                                      |
++------------+---------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* AXIS
++------------+---------------+-------+-------+-----+-------+-------+--------+-------+-------+--------+
+| Interface  | Register Mode | TDATA | TDEST | TID | TKEEP | TLAST | TREADY | TSTRB | TUSER | TVALID |
++------------+---------------+-------+-------+-----+-------+-------+--------+-------+-------+--------+
+| in_stream  | both          | 24    | 1     | 1   | 3     | 1     | 1      | 3     | 1     | 1      |
+| out_stream | both          | 24    | 1     | 1   | 3     | 1     | 1      | 3     | 1     | 1      |
++------------+---------------+-------+-------+-----+-------+-------+--------+-------+-------+--------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++---------------+-----------+---------------------------------------------+
+| Argument      | Direction | Datatype                                    |
++---------------+-----------+---------------------------------------------+
+| in_stream     | in        | stream<hls::axis<ap_uint<24>, 1, 1, 1>, 0>& |
+| out_stream    | out       | stream<hls::axis<ap_uint<24>, 1, 1, 1>, 0>& |
+| ctrl_reg      | in        | ap_uint<32>                                 |
+| threshold_reg | in        | ap_uint<32>                                 |
++---------------+-----------+---------------------------------------------+
+
+* SW-to-HW Mapping
++---------------+--------------+-----------+-----------------------------------------+
+| Argument      | HW Interface | HW Type   | HW Info                                 |
++---------------+--------------+-----------+-----------------------------------------+
+| in_stream     | in_stream    | interface |                                         |
+| out_stream    | out_stream   | interface |                                         |
+| ctrl_reg      | s_axi_CTRL   | register  | name=ctrl_reg offset=0x10 range=32      |
+| threshold_reg | s_axi_CTRL   | register  | name=threshold_reg offset=0x18 range=32 |
++---------------+--------------+-----------+-----------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++--------------------------------------------------------+-----+--------+-------------+------+--------+---------+
+| Name                                                   | DSP | Pragma | Variable    | Op   | Impl   | Latency |
++--------------------------------------------------------+-----+--------+-------------+------+--------+---------+
+| + dehaze                                               | 10  |        |             |      |        |         |
+|  + Loop_VITIS_LOOP_372_1_proc5                         | 0   |        |             |      |        |         |
+|    n_10_fu_107_p2                                      | -   |        | n_10        | add  | fabric | 0       |
+|  + dehaze_core                                         | 8   |        |             |      |        |         |
+|    p_channel_U                                         | -   |        | p_channel   | fifo | srl    | 0       |
+|   + dark_window                                        | 0   |        |             |      |        |         |
+|    + dark_window_Pipeline_WINDOW_BYPASS                | 0   |        |             |      |        |         |
+|      n_6_fu_75_p2                                      | -   |        | n_6         | add  | fabric | 0       |
+|    + dark_window_Pipeline_WINDOW_ROWS_WINDOW_COLS      | 0   |        |             |      |        |         |
+|      add_ln65_fu_267_p2                                | -   |        | add_ln65    | add  | fabric | 0       |
+|      add_ln65_1_fu_293_p2                              | -   |        | add_ln65_1  | add  | fabric | 0       |
+|      add_ln66_fu_401_p2                                | -   |        | add_ln66    | add  | fabric | 0       |
+|   + restore_stream                                     | 8   |        |             |      |        |         |
+|     mac_muladd_16ns_8ns_7ns_24_4_1_U100                | 1   |        | mul_ln141   | mul  | dsp48  | 3       |
+|     mac_muladd_16ns_8ns_7ns_24_4_1_U100                | 1   |        | add_ln141   | add  | dsp48  | 3       |
+|     mul_24ns_26ns_49_1_1_U98                           | 2   |        | mul_ln141_1 | mul  | auto   | 0       |
+|     add_ln180_fu_761_p2                                | -   |        | add_ln180   | add  | fabric | 0       |
+|     add_ln180_1_fu_771_p2                              | -   |        | add_ln180_1 | add  | fabric | 0       |
+|     mul_20ns_22ns_41_1_1_U99                           | 1   |        | mul_ln180   | mul  | auto   | 0       |
+|     delta_fu_837_p2                                    | -   |        | delta       | sub  | fabric | 0       |
+|     add_ln189_fu_854_p2                                | -   |        | add_ln189   | add  | fabric | 0       |
+|     sub_ln189_fu_874_p2                                | -   |        | sub_ln189   | sub  | fabric | 0       |
+|     sub_ln189_1_fu_896_p2                              | -   |        | sub_ln189_1 | sub  | fabric | 0       |
+|     add_ln214_fu_951_p2                                | -   |        | add_ln214   | add  | fabric | 0       |
+|    + restore_stream_Pipeline_RESTORE_BYPASS            | 0   |        |             |      |        |         |
+|      n_4_fu_75_p2                                      | -   |        | n_4         | add  | fabric | 0       |
+|    + restore_stream_Pipeline_RESTORE_ROWS_RESTORE_COLS | 4   |        |             |      |        |         |
+|      add_ln151_fu_640_p2                               | -   |        | add_ln151   | add  | fabric | 0       |
+|      add_ln151_1_fu_784_p2                             | -   |        | add_ln151_1 | add  | fabric | 0       |
+|      spread_V_fu_811_p2                                | -   |        | spread_V    | sub  | fabric | 0       |
+|      hist_V_16_fu_966_p2                               | -   |        | hist_V_16   | add  | fabric | 0       |
+|      count_V_1_fu_1103_p2                              | -   |        | count_V_1   | add  | fabric | 0       |
+|      mul_mul_24ns_8ns_25_4_1_U40                       | 1   |        | ret_V       | mul  | dsp48  | 3       |
+|      raw_V_fu_702_p2                                   | -   |        | raw_V       | sub  | fabric | 0       |
+|      d_V_fu_1151_p2                                    | -   |        | d_V         | sub  | fabric | 0       |
+|      mul_mul_16ns_9s_25_4_1_U41                        | 1   |        | product_V   | mul  | dsp48  | 3       |
+|      value_V_fu_1210_p2                                | -   |        | value_V     | add  | fabric | 0       |
+|      add_ln186_fu_1239_p2                              | -   |        | add_ln186   | add  | fabric | 0       |
+|      d_V_1_fu_1167_p2                                  | -   |        | d_V_1       | sub  | fabric | 0       |
+|      mul_mul_16ns_9s_25_4_1_U42                        | 1   |        | product_V_1 | mul  | dsp48  | 3       |
+|      value_V_1_fu_1266_p2                              | -   |        | value_V_1   | add  | fabric | 0       |
+|      add_ln186_7_fu_1295_p2                            | -   |        | add_ln186_7 | add  | fabric | 0       |
+|      d_V_2_fu_1179_p2                                  | -   |        | d_V_2       | sub  | fabric | 0       |
+|      mul_mul_16ns_9s_25_4_1_U43                        | 1   |        | product_V_2 | mul  | dsp48  | 3       |
+|      value_V_2_fu_1322_p2                              | -   |        | value_V_2   | add  | fabric | 0       |
+|      add_ln186_8_fu_1351_p2                            | -   |        | add_ln186_8 | add  | fabric | 0       |
+|      x_1_fu_1084_p2                                    | -   |        | x_1         | add  | fabric | 0       |
+|    + restore_stream_Pipeline_VITIS_LOOP_182_2          | 0   |        |             |      |        |         |
+|      add_ln182_fu_238_p2                               | -   |        | add_ln182   | add  | fabric | 0       |
+|      acc_1_fu_300_p2                                   | -   |        | acc_1       | add  | fabric | 0       |
+|  + sobel_core                                          | 2   |        |             |      |        |         |
+|    row_2_fu_395_p2                                     | -   |        | row_2       | add  | fabric | 0       |
+|    sub_ln225_3_fu_555_p2                               | -   |        | sub_ln225_3 | sub  | fabric | 0       |
+|    sub_ln225_4_fu_454_p2                               | -   |        | sub_ln225_4 | sub  | fabric | 0       |
+|    gx_V_8_fu_571_p2                                    | -   |        | gx_V_8      | add  | fabric | 0       |
+|    add_ln226_2_fu_516_p2                               | -   |        | add_ln226_2 | add  | fabric | 0       |
+|    gx_V_9_fu_596_p2                                    | -   |        | gx_V_9      | sub  | fabric | 0       |
+|    gy_V_9_fu_618_p2                                    | -   |        | gy_V_9      | sub  | fabric | 0       |
+|    mag_V_1_fu_649_p2                                   | -   |        | mag_V_1     | add  | fabric | 0       |
+|    add_ln186_4_fu_671_p2                               | -   |        | add_ln186_4 | add  | fabric | 0       |
+|    add_ln225_fu_777_p2                                 | -   |        | add_ln225   | add  | fabric | 0       |
+|    sub_ln225_1_fu_795_p2                               | -   |        | sub_ln225_1 | sub  | fabric | 0       |
+|    sub_ln225_2_fu_805_p2                               | -   |        | sub_ln225_2 | sub  | fabric | 0       |
+|    sub_ln226_2_fu_823_p2                               | -   |        | sub_ln226_2 | sub  | fabric | 0       |
+|    add_ln226_fu_833_p2                                 | -   |        | add_ln226   | add  | fabric | 0       |
+|    gx_V_6_fu_893_p2                                    | -   |        | gx_V_6      | sub  | fabric | 0       |
+|    gy_V_6_fu_915_p2                                    | -   |        | gy_V_6      | sub  | fabric | 0       |
+|    mag_V_fu_943_p2                                     | -   |        | mag_V       | add  | fabric | 0       |
+|    add_ln186_2_fu_965_p2                               | -   |        | add_ln186_2 | add  | fabric | 0       |
+|   + sobel_core_Pipeline_VITIS_LOOP_253_1               | 0   |        |             |      |        |         |
+|     n_2_fu_76_p2                                       | -   |        | n_2         | add  | fabric | 0       |
+|   + sobel_core_Pipeline_VITIS_LOOP_263_2               | 0   |        |             |      |        |         |
+|     add_ln263_fu_96_p2                                 | -   |        | add_ln263   | add  | fabric | 0       |
+|   + sobel_core_Pipeline_VITIS_LOOP_276_4               | 2   |        |             |      |        |         |
+|     add_ln276_fu_430_p2                                | -   |        | add_ln276   | add  | fabric | 0       |
+|     mac_muladd_8ns_7ns_8ns_15_4_1_U126                 | 1   |        | mul_ln186   | mul  | dsp48  | 3       |
+|     mul_8ns_9ns_16_1_1_U125                            | -   |        | mul_ln186_1 | mul  | auto   | 0       |
+|     mac_muladd_8ns_5ns_16ns_16_4_1_U127                | 1   |        | mul_ln186_2 | mul  | dsp48  | 3       |
+|     mac_muladd_8ns_7ns_8ns_15_4_1_U126                 | 1   |        | add_ln186   | add  | dsp48  | 3       |
+|     mac_muladd_8ns_5ns_16ns_16_4_1_U127                | 1   |        | add_ln186_1 | add  | dsp48  | 3       |
+|     sum_V_fu_496_p2                                    | -   |        | sum_V       | add  | fabric | 0       |
+|     add_ln225_fu_544_p2                                | -   |        | add_ln225   | add  | fabric | 0       |
+|     add_ln225_1_fu_661_p2                              | -   |        | add_ln225_1 | add  | fabric | 0       |
+|     add_ln214_fu_677_p2                                | -   |        | add_ln214   | add  | fabric | 0       |
+|     add_ln226_fu_574_p2                                | -   |        | add_ln226   | add  | fabric | 0       |
+|     gx_V_3_fu_712_p2                                   | -   |        | gx_V_3      | sub  | fabric | 0       |
+|     gy_V_3_fu_726_p2                                   | -   |        | gy_V_3      | sub  | fabric | 0       |
+|     mag_V_fu_772_p2                                    | -   |        | mag_V       | add  | fabric | 0       |
+|     add_ln186_4_fu_794_p2                              | -   |        | add_ln186_4 | add  | fabric | 0       |
+|   + sobel_core_Pipeline_VITIS_LOOP_318_5               | 0   |        |             |      |        |         |
+|     add_ln318_fu_343_p2                                | -   |        | add_ln318   | add  | fabric | 0       |
+|     add_ln225_fu_407_p2                                | -   |        | add_ln225   | add  | fabric | 0       |
+|     sub_ln225_fu_524_p2                                | -   |        | sub_ln225   | sub  | fabric | 0       |
+|     sub_ln225_1_fu_425_p2                              | -   |        | sub_ln225_1 | sub  | fabric | 0       |
+|     add_ln226_fu_455_p2                                | -   |        | add_ln226   | add  | fabric | 0       |
+|     gx_V_1_fu_567_p2                                   | -   |        | gx_V_1      | sub  | fabric | 0       |
+|     gy_V_1_fu_581_p2                                   | -   |        | gy_V_1      | sub  | fabric | 0       |
+|     mag_V_fu_615_p2                                    | -   |        | mag_V       | add  | fabric | 0       |
+|     add_ln186_fu_637_p2                                | -   |        | add_ln186   | add  | fabric | 0       |
+|  + Loop_VITIS_LOOP_379_2_proc6                         | 0   |        |             |      |        |         |
+|    n_8_fu_135_p2                                       | -   |        | n_8         | add  | fabric | 0       |
+|    add_ln379_1_fu_155_p2                               | -   |        | add_ln379_1 | add  | fabric | 0       |
++--------------------------------------------------------+-----+--------+-------------+------+--------+---------+
+
+
+================================================================
+== Bind Storage Report
+================================================================
++--------------------------------------------------------+------+------+--------+-------------------+---------+--------+---------+
+| Name                                                   | BRAM | URAM | Pragma | Variable          | Storage | Impl   | Latency |
++--------------------------------------------------------+------+------+--------+-------------------+---------+--------+---------+
+| + dehaze                                               | 13   | 0    |        |                   |         |        |         |
+|   threshold_reg_c15_U                                  | -    | -    |        | threshold_reg_c15 | fifo    | srl    | 0       |
+|   threshold_reg_c_U                                    | -    | -    |        | threshold_reg_c   | fifo    | srl    | 0       |
+|   ctrl_reg_c14_U                                       | -    | -    |        | ctrl_reg_c14      | fifo    | srl    | 0       |
+|   ctrl_reg_c_U                                         | -    | -    |        | ctrl_reg_c        | fifo    | srl    | 0       |
+|   rgb_input_U                                          | -    | -    | yes    | rgb_input         | fifo    | lutram | 0       |
+|   dehazed_U                                            | -    | -    | yes    | dehazed           | fifo    | lutram | 0       |
+|   processed_U                                          | -    | -    | yes    | processed         | fifo    | lutram | 0       |
+|  + dehaze_core                                         | 8    | 0    |        |                   |         |        |         |
+|    params_c_U                                          | -    | -    |        | params_c          | fifo    | srl    | 0       |
+|    ctrl_c_U                                            | -    | -    |        | ctrl_c            | fifo    | srl    | 0       |
+|    window_U                                            | -    | -    | yes    | window            | fifo    | lutram | 0       |
+|   + dark_window                                        | 6    | 0    |        |                   |         |        |         |
+|     line_a_V_U                                         | 3    | -    | yes    | line_a_V          | ram_s2p | bram   | 1       |
+|     line_b_V_U                                         | 3    | -    | yes    | line_b_V          | ram_s2p | bram   | 1       |
+|   + restore_stream                                     | 2    | 0    |        |                   |         |        |         |
+|     reciprocal_a_U                                     | 1    | -    |        | reciprocal_a      | rom_1p  | auto   | 1       |
+|    + restore_stream_Pipeline_RESTORE_ROWS_RESTORE_COLS | 1    | 0    |        |                   |         |        |         |
+|      reciprocal_t_U                                    | 1    | -    |        | reciprocal_t      | rom_1p  | auto   | 1       |
+|  + sobel_core                                          | 5    | 0    |        |                   |         |        |         |
+|    lineA_V_U                                           | 1    | -    |        | lineA_V           | ram_s2p | auto   | 1       |
+|    lineB_V_U                                           | 1    | -    |        | lineB_V           | ram_s2p | auto   | 1       |
+|    rgbLine_V_U                                         | 3    | -    |        | rgbLine_V         | ram_1p  | auto   | 1       |
++--------------------------------------------------------+------+------+--------+-------------------+---------+--------+---------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Pragmas with Warnings
++----------+---------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Type     | Options | Location                           | Messages                                                                                                                                                                           |
++----------+---------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| dataflow |         | dehaze_ip/dehaze.cpp:371 in dehaze | Since the only kind of statements allowed in a canonical dataflow region are variable declarations and function calls, the compiler may not be able to correctly handle the region |
++----------+---------+------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+------------------------------------------------------+--------------------------------------------------------+
+| Type            | Options                                              | Location                                               |
++-----------------+------------------------------------------------------+--------------------------------------------------------+
+| inline          |                                                      | dehaze_ip/dehaze.cpp:23 in min3                        |
+| inline          |                                                      | dehaze_ip/dehaze.cpp:28 in minch                       |
+| inline          |                                                      | dehaze_ip/dehaze.cpp:32 in maxch                       |
+| inline          |                                                      | dehaze_ip/dehaze.cpp:38 in recover                     |
+| inline          | off                                                  | dehaze_ip/dehaze.cpp:49 in dark_window                 |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:52 in dark_window                 |
+| bind_storage    | variable=line_a type=ram_s2p impl=bram               | dehaze_ip/dehaze.cpp:58 in dark_window, line_a         |
+| bind_storage    | variable=line_b type=ram_s2p impl=bram               | dehaze_ip/dehaze.cpp:59 in dark_window, line_b         |
+| array_partition | variable=w complete dim=0                            | dehaze_ip/dehaze.cpp:61 in dark_window, w              |
+| array_partition | variable=last complete                               | dehaze_ip/dehaze.cpp:63 in dark_window, last           |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:67 in dark_window                 |
+| array_partition | variable=m complete                                  | dehaze_ip/dehaze.cpp:70 in dark_window, m              |
+| unroll          |                                                      | dehaze_ip/dehaze.cpp:89 in dark_window                 |
+| unroll          |                                                      | dehaze_ip/dehaze.cpp:94 in dark_window                 |
+| unroll          |                                                      | dehaze_ip/dehaze.cpp:99 in dark_window                 |
+| inline          | off                                                  | dehaze_ip/dehaze.cpp:122 in restore_stream             |
+| reset           | variable=previous_a                                  | dehaze_ip/dehaze.cpp:125 in restore_stream, previous_a |
+| reset           | variable=valid_a                                     | dehaze_ip/dehaze.cpp:126 in restore_stream, valid_a    |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:133 in restore_stream             |
+| array_partition | variable=hist complete                               | dehaze_ip/dehaze.cpp:145 in restore_stream, hist       |
+| unroll          |                                                      | dehaze_ip/dehaze.cpp:147 in restore_stream             |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:153 in restore_stream             |
+| inline          | off                                                  | dehaze_ip/dehaze.cpp:198 in dehaze_core                |
+| stream          | variable=window depth=64                             | dehaze_ip/dehaze.cpp:200 in dehaze_core, window        |
+| bind_storage    | variable=window type=fifo impl=lutram                | dehaze_ip/dehaze.cpp:201 in dehaze_core, window        |
+| dataflow        |                                                      | dehaze_ip/dehaze.cpp:202 in dehaze_core                |
+| inline          |                                                      | dehaze_ip/dehaze.cpp:208 in write_rgb_pixel            |
+| inline          |                                                      | dehaze_ip/dehaze.cpp:212 in rgb_to_gray                |
+| inline          |                                                      | dehaze_ip/dehaze.cpp:224 in sobel_magnitude            |
+| inline          |                                                      | dehaze_ip/dehaze.cpp:236 in sobel_result               |
+| inline          | off                                                  | dehaze_ip/dehaze.cpp:246 in sobel_core                 |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:254 in sobel_core                 |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:277 in sobel_core                 |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:319 in sobel_core                 |
+| interface       | axis port=in_stream                                  | dehaze_ip/dehaze.cpp:359 in dehaze, in_stream          |
+| interface       | axis port=out_stream                                 | dehaze_ip/dehaze.cpp:360 in dehaze, out_stream         |
+| interface       | s_axilite port=ctrl_reg bundle=CTRL offset=0x10      | dehaze_ip/dehaze.cpp:361 in dehaze, ctrl_reg           |
+| interface       | s_axilite port=threshold_reg bundle=CTRL offset=0x18 | dehaze_ip/dehaze.cpp:362 in dehaze, threshold_reg      |
+| interface       | s_axilite port=return bundle=CTRL                    | dehaze_ip/dehaze.cpp:363 in dehaze, return             |
+| stream          | variable=rgb_input depth=64                          | dehaze_ip/dehaze.cpp:365 in dehaze, rgb_input          |
+| stream          | variable=dehazed depth=64                            | dehaze_ip/dehaze.cpp:366 in dehaze, dehazed            |
+| stream          | variable=processed depth=64                          | dehaze_ip/dehaze.cpp:367 in dehaze, processed          |
+| bind_storage    | variable=rgb_input type=fifo impl=lutram             | dehaze_ip/dehaze.cpp:368 in dehaze, rgb_input          |
+| bind_storage    | variable=dehazed type=fifo impl=lutram               | dehaze_ip/dehaze.cpp:369 in dehaze, dehazed            |
+| bind_storage    | variable=processed type=fifo impl=lutram             | dehaze_ip/dehaze.cpp:370 in dehaze, processed          |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:373 in dehaze                     |
+| pipeline        | II=1                                                 | dehaze_ip/dehaze.cpp:380 in dehaze                     |
++-----------------+------------------------------------------------------+--------------------------------------------------------+
+
+

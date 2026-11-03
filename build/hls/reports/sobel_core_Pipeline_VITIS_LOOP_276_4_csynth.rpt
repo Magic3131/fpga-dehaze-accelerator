@@ -1,0 +1,144 @@
+
+
+================================================================
+== Vitis HLS Report for 'sobel_core_Pipeline_VITIS_LOOP_263_2'
+================================================================
+* Date:           Sat Oct 24 22:52:44 2026
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        dehaze_ip
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  5.134 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+    +---------+---------+-----------+-----------+------+------+---------+
+    |     1282|     1282|  12.820 us|  12.820 us|  1282|  1282|       no|
+    +---------+---------+-----------+-----------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_263_2  |     1280|     1280|         1|          1|          1|  1280|       yes|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|     23|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       -|      -|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|     27|    -|
+|Register         |        -|    -|      13|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|      13|     50|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|      ~0|     ~0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------+----------+----+---+----+------------+------------+
+    |    Variable Name    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------+----------+----+---+----+------------+------------+
+    |add_ln263_fu_96_p2   |         +|   0|  0|  12|          11|           1|
+    |icmp_ln263_fu_90_p2  |      icmp|   0|  0|  11|          11|          11|
+    +---------------------+----------+----+---+----+------------+------------+
+    |Total                |          |   0|  0|  23|          22|          12|
+    +---------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------+----+-----------+-----+-----------+
+    |         Name         | LUT| Input Size| Bits| Total Bits|
+    +----------------------+----+-----------+-----+-----------+
+    |ap_done_int           |   9|          2|    1|          2|
+    |ap_sig_allocacmp_c_1  |   9|          2|   11|         22|
+    |c_fu_36               |   9|          2|   11|         22|
+    +----------------------+----+-----------+-----+-----------+
+    |Total                 |  27|          6|   23|         46|
+    +----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------+----+----+-----+-----------+
+    |     Name    | FF | LUT| Bits| Const Bits|
+    +-------------+----+----+-----+-----------+
+    |ap_CS_fsm    |   1|   0|    1|          0|
+    |ap_done_reg  |   1|   0|    1|          0|
+    |c_fu_36      |  11|   0|   11|          0|
+    +-------------+----+----+-----+-----------+
+    |Total        |  13|   0|   13|          0|
+    +-------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------+-----+-----+------------+--------------------------------------+--------------+
+|      RTL Ports     | Dir | Bits|  Protocol  |             Source Object            |    C Type    |
++--------------------+-----+-----+------------+--------------------------------------+--------------+
+|ap_clk              |   in|    1|  ap_ctrl_hs|  sobel_core_Pipeline_VITIS_LOOP_263_2|  return value|
+|ap_rst              |   in|    1|  ap_ctrl_hs|  sobel_core_Pipeline_VITIS_LOOP_263_2|  return value|
+|ap_start            |   in|    1|  ap_ctrl_hs|  sobel_core_Pipeline_VITIS_LOOP_263_2|  return value|
+|ap_done             |  out|    1|  ap_ctrl_hs|  sobel_core_Pipeline_VITIS_LOOP_263_2|  return value|
+|ap_idle             |  out|    1|  ap_ctrl_hs|  sobel_core_Pipeline_VITIS_LOOP_263_2|  return value|
+|ap_ready            |  out|    1|  ap_ctrl_hs|  sobel_core_Pipeline_VITIS_LOOP_263_2|  return value|
+|lineA_V_address0    |  out|   11|   ap_memory|                               lineA_V|         array|
+|lineA_V_ce0         |  out|    1|   ap_memory|                               lineA_V|         array|
+|lineA_V_we0         |  out|    1|   ap_memory|                               lineA_V|         array|
+|lineA_V_d0          |  out|    8|   ap_memory|                               lineA_V|         array|
+|lineB_V_address0    |  out|   11|   ap_memory|                               lineB_V|         array|
+|lineB_V_ce0         |  out|    1|   ap_memory|                               lineB_V|         array|
+|lineB_V_we0         |  out|    1|   ap_memory|                               lineB_V|         array|
+|lineB_V_d0          |  out|    8|   ap_memory|                               lineB_V|         array|
+|rgbLine_V_address0  |  out|   11|   ap_memory|                             rgbLine_V|         array|
+|rgbLine_V_ce0       |  out|    1|   ap_memory|                             rgbLine_V|         array|
+|rgbLine_V_we0       |  out|    1|   ap_memory|                             rgbLine_V|         array|
+|rgbLine_V_d0        |  out|   24|   ap_memory|                             rgbLine_V|         array|
++--------------------+-----+-----+------------+--------------------------------------+--------------+
+

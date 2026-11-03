@@ -1,0 +1,24 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling ../../../dehaze_test.cpp in debug mode
+   Generating csim.exe
+[PASS] raw_bypass                   pixels=921600 SOF/EOL OK
+[PASS] dehaze_default_parameters    pixels=921600 SOF/EOL OK
+[PASS] sobel_only_default_threshold pixels=921600 SOF/EOL OK
+[PASS] dehaze_then_sobel_default    pixels=921600 SOF/EOL OK
+[PASS] dehaze_then_overlay_default  pixels=921600 SOF/EOL OK
+[PASS] dehaze_custom_parameters     pixels=921600 SOF/EOL OK
+[PASS] sobel_custom_threshold       pixels=921600 SOF/EOL OK
+[PASS] dehaze_sobel_custom          pixels=921600 SOF/EOL OK
+[PASS] sobel_overlay_original       pixels=921600 SOF/EOL OK
+[PASS] dehaze_overlay_custom        pixels=921600 SOF/EOL OK
+[PASS] repeat_frame_state           pixels=921600 SOF/EOL OK
+[PASS] dehaze_limit_gain            pixels=921600 SOF/EOL OK
+[PASS] dehaze_protect               pixels=921600 SOF/EOL OK
+[PASS] auto_a_frame1_seed           pixels=921600 SOF/EOL OK
+[PASS] auto_a_frame2_evolved        pixels=921600 SOF/EOL OK
+[PASS] auto_a_reset                 pixels=921600 SOF/EOL OK
+ALL TESTS PASSED
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 921600
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************

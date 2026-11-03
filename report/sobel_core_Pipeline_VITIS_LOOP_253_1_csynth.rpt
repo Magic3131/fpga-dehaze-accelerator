@@ -1,0 +1,296 @@
+
+
+================================================================
+== Vitis HLS Report for 'sobel_core'
+================================================================
+* Date:           Sat Oct 24 22:52:45 2026
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        dehaze_ip
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.300 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+--------+--------+---------+
+    |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline|
+    |   min   |   max   |    min   |    max   |   min  |   max  |   Type  |
+    +---------+---------+----------+----------+--------+--------+---------+
+    |   921604|   934974|  9.216 ms|  9.350 ms|  921604|  934974|       no|
+    +---------+---------+----------+----------+--------+--------+---------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------------------------------+--------------------------------------+---------+---------+-----------+-----------+--------+--------+---------+
+        |                                                 |                                      |  Latency (cycles) |   Latency (absolute)  |     Interval    | Pipeline|
+        |                     Instance                    |                Module                |   min   |   max   |    min    |    max    |   min  |   max  |   Type  |
+        +-------------------------------------------------+--------------------------------------+---------+---------+-----------+-----------+--------+--------+---------+
+        |grp_sobel_core_Pipeline_VITIS_LOOP_253_1_fu_211  |sobel_core_Pipeline_VITIS_LOOP_253_1  |   921602|   921602|   9.216 ms|   9.216 ms|  921602|  921602|       no|
+        |grp_sobel_core_Pipeline_VITIS_LOOP_263_2_fu_219  |sobel_core_Pipeline_VITIS_LOOP_263_2  |     1282|     1282|  12.820 us|  12.820 us|    1282|    1282|       no|
+        |grp_sobel_core_Pipeline_VITIS_LOOP_276_4_fu_229  |sobel_core_Pipeline_VITIS_LOOP_276_4  |     1289|     1289|  12.890 us|  12.890 us|    1289|    1289|       no|
+        |grp_sobel_core_Pipeline_VITIS_LOOP_318_5_fu_256  |sobel_core_Pipeline_VITIS_LOOP_318_5  |     1285|     1285|  12.850 us|  12.850 us|    1285|    1285|       no|
+        +-------------------------------------------------+--------------------------------------+---------+---------+-----------+-----------+--------+--------+---------+
+
+        * Loop: 
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |                    |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |      Loop Name     |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- VITIS_LOOP_272_3  |   932400|   932400|      1295|          -|          -|   720|        no|
+        +--------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|    613|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    2|    1284|   1459|    -|
+|Memory           |        5|    -|       0|      0|    0|
+|Multiplexer      |        -|    -|       -|    441|    -|
+|Register         |        -|    -|     295|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        5|    2|    1579|   2513|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        1|   ~0|       1|      4|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------------------------+--------------------------------------+---------+----+-----+-----+-----+
+    |                     Instance                    |                Module                | BRAM_18K| DSP|  FF | LUT | URAM|
+    +-------------------------------------------------+--------------------------------------+---------+----+-----+-----+-----+
+    |grp_sobel_core_Pipeline_VITIS_LOOP_253_1_fu_211  |sobel_core_Pipeline_VITIS_LOOP_253_1  |        0|   0|   23|  101|    0|
+    |grp_sobel_core_Pipeline_VITIS_LOOP_263_2_fu_219  |sobel_core_Pipeline_VITIS_LOOP_263_2  |        0|   0|   13|   50|    0|
+    |grp_sobel_core_Pipeline_VITIS_LOOP_276_4_fu_229  |sobel_core_Pipeline_VITIS_LOOP_276_4  |        0|   2|  822|  743|    0|
+    |grp_sobel_core_Pipeline_VITIS_LOOP_318_5_fu_256  |sobel_core_Pipeline_VITIS_LOOP_318_5  |        0|   0|  426|  565|    0|
+    +-------------------------------------------------+--------------------------------------+---------+----+-----+-----+-----+
+    |Total                                            |                                      |        0|   2| 1284| 1459|    0|
+    +-------------------------------------------------+--------------------------------------+---------+----+-----+-----+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    +-------------+------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |    Memory   |               Module               | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +-------------+------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |lineA_V_U    |sobel_core_lineA_V_RAM_AUTO_1R1W    |        1|  0|   0|    0|  1280|    8|     1|        10240|
+    |lineB_V_U    |sobel_core_lineA_V_RAM_AUTO_1R1W    |        1|  0|   0|    0|  1280|    8|     1|        10240|
+    |rgbLine_V_U  |sobel_core_rgbLine_V_RAM_AUTO_1R1W  |        3|  0|   0|    0|  1280|   24|     1|        30720|
+    +-------------+------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |Total        |                                    |        5|  0|   0|    0|  3840|   40|     3|        51200|
+    +-------------+------------------------------------+---------+---+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +------------------------------+----------+----+---+----+------------+------------+
+    |         Variable Name        | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------------+----------+----+---+----+------------+------------+
+    |add_ln186_2_fu_965_p2         |         +|   0|  0|  15|           8|           8|
+    |add_ln186_4_fu_671_p2         |         +|   0|  0|  15|           8|           8|
+    |add_ln214_fu_470_p2           |         +|   0|  0|  10|          10|          10|
+    |add_ln225_fu_777_p2           |         +|   0|  0|  13|          10|          10|
+    |add_ln226_1_fu_506_p2         |         +|   0|  0|  10|          10|          10|
+    |add_ln226_2_fu_516_p2         |         +|   0|  0|  12|          11|          11|
+    |add_ln226_fu_833_p2           |         +|   0|  0|  12|          11|          11|
+    |gx_V_8_fu_571_p2              |         +|   0|  0|  12|          11|          11|
+    |gx_V_fu_868_p2                |         +|   0|  0|  11|          11|          11|
+    |mag_V_1_fu_649_p2             |         +|   0|  0|  12|          12|          12|
+    |mag_V_fu_943_p2               |         +|   0|  0|  12|          12|          12|
+    |row_2_fu_395_p2               |         +|   0|  0|  13|          10|           1|
+    |gx_V_6_fu_893_p2              |         -|   0|  0|  12|           1|          11|
+    |gx_V_9_fu_596_p2              |         -|   0|  0|  12|           1|          11|
+    |gy_V_6_fu_915_p2              |         -|   0|  0|  12|           1|          11|
+    |gy_V_8_fu_582_p2              |         -|   0|  0|  11|          11|          11|
+    |gy_V_9_fu_618_p2              |         -|   0|  0|  12|           1|          11|
+    |gy_V_fu_879_p2                |         -|   0|  0|  11|          11|          11|
+    |sub_ln225_1_fu_795_p2         |         -|   0|  0|  14|           9|           9|
+    |sub_ln225_2_fu_805_p2         |         -|   0|  0|  13|          10|          10|
+    |sub_ln225_3_fu_555_p2         |         -|   0|  0|  13|          10|          10|
+    |sub_ln225_4_fu_454_p2         |         -|   0|  0|  14|           9|           9|
+    |sub_ln225_5_fu_464_p2         |         -|   0|  0|  10|          10|          10|
+    |sub_ln225_fu_857_p2           |         -|   0|  0|  11|          11|          11|
+    |sub_ln226_1_fu_577_p2         |         -|   0|  0|  11|          11|          11|
+    |sub_ln226_2_fu_823_p2         |         -|   0|  0|  13|          10|          10|
+    |sub_ln226_3_fu_500_p2         |         -|   0|  0|  10|          10|          10|
+    |sub_ln226_fu_874_p2           |         -|   0|  0|  11|          11|          11|
+    |ap_block_state14              |       and|   0|  0|   2|           1|           1|
+    |ap_block_state9               |       and|   0|  0|   2|           1|           1|
+    |cmp82_fu_419_p2               |      icmp|   0|  0|  11|          10|           1|
+    |icmp_ln1031_1_fu_683_p2       |      icmp|   0|  0|  11|           8|           8|
+    |icmp_ln1031_fu_977_p2         |      icmp|   0|  0|  11|           8|           8|
+    |icmp_ln1035_1_fu_665_p2       |      icmp|   0|  0|   9|           4|           1|
+    |icmp_ln1035_fu_959_p2         |      icmp|   0|  0|   9|           4|           1|
+    |icmp_ln250_fu_347_p2          |      icmp|   0|  0|  11|           8|           1|
+    |icmp_ln272_fu_389_p2          |      icmp|   0|  0|  11|          10|          10|
+    |icmp_ln275_fu_406_p2          |      icmp|   0|  0|  11|          10|           1|
+    |ap_block_state1               |        or|   0|  0|   2|           1|           1|
+    |wrB_fu_412_p2                 |        or|   0|  0|   2|           1|           1|
+    |edge_V_1_fu_675_p3            |    select|   0|  0|   8|           1|           2|
+    |edge_V_fu_969_p3              |    select|   0|  0|   8|           1|           2|
+    |edge_threshold_V_1_fu_353_p3  |    select|   0|  0|   8|           1|           8|
+    |gx_V_10_fu_602_p3             |    select|   0|  0|  11|           1|          11|
+    |gx_V_7_fu_899_p3              |    select|   0|  0|  11|           1|          11|
+    |gy_V_10_fu_624_p3             |    select|   0|  0|  11|           1|          11|
+    |gy_V_7_fu_921_p3              |    select|   0|  0|  11|           1|          11|
+    |select_ln238_1_fu_693_p3      |    select|   0|  0|  24|           1|           2|
+    |select_ln238_fu_990_p3        |    select|   0|  0|  24|           1|           2|
+    |select_ln779_1_fu_717_p3      |    select|   0|  0|  24|           1|          24|
+    |select_ln779_fu_1015_p3       |    select|   0|  0|  24|           1|          24|
+    |v_V_3_fu_998_p3               |    select|   0|  0|   8|           1|           8|
+    |v_V_5_fu_700_p3               |    select|   0|  0|   8|           1|           8|
+    |is_edge_1_fu_688_p2           |       xor|   0|  0|   2|           1|           2|
+    |is_edge_fu_985_p2             |       xor|   0|  0|   2|           1|           2|
+    +------------------------------+----------+----+---+----+------------+------------+
+    |Total                         |          |   0|  0| 613|         332|         445|
+    +------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------+----+-----------+-----+-----------+
+    |         Name         | LUT| Input Size| Bits| Total Bits|
+    +----------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm             |  65|         15|    1|         15|
+    |ap_done               |   9|          2|    1|          2|
+    |ctrl_reg_blk_n        |   9|          2|    1|          2|
+    |dehazed175_read       |  14|          3|    1|          3|
+    |delayed_rgb_V_fu_184  |   9|          2|   24|         48|
+    |lineA_V_address0      |  20|          4|   11|         44|
+    |lineA_V_ce0           |  20|          4|    1|          4|
+    |lineA_V_ce1           |   9|          2|    1|          2|
+    |lineA_V_d0            |  14|          3|    8|         24|
+    |lineA_V_we0           |  14|          3|    1|          3|
+    |lineB_V_address0      |  20|          4|   11|         44|
+    |lineB_V_ce0           |  20|          4|    1|          4|
+    |lineB_V_ce1           |   9|          2|    1|          2|
+    |lineB_V_d0            |  14|          3|    8|         24|
+    |lineB_V_we0           |  14|          3|    1|          3|
+    |processed176_blk_n    |   9|          2|    1|          2|
+    |processed176_din      |  25|          5|   24|        120|
+    |processed176_write    |  25|          5|    1|          5|
+    |real_start            |   9|          2|    1|          2|
+    |rgbLine_V_address0    |  20|          4|   11|         44|
+    |rgbLine_V_ce0         |  20|          4|    1|          4|
+    |rgbLine_V_d0          |  14|          3|   24|         72|
+    |rgbLine_V_we0         |  14|          3|    1|          3|
+    |row_fu_188            |   9|          2|   10|         20|
+    |threshold_reg_blk_n   |   9|          2|    1|          2|
+    |w0c_V_fu_172          |   9|          2|    8|         16|
+    |w1c_V_fu_176          |   9|          2|    8|         16|
+    |w2c_V_fu_180          |   9|          2|    8|         16|
+    +----------------------+----+-----------+-----+-----------+
+    |Total                 | 441|         94|  171|        546|
+    +----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------------------------------------+----+----+-----+-----------+
+    |                             Name                             | FF | LUT| Bits| Const Bits|
+    +--------------------------------------------------------------+----+----+-----+-----------+
+    |add_ln214_reg_1188                                            |  10|   0|   10|          0|
+    |add_ln226_2_reg_1193                                          |  11|   0|   11|          0|
+    |add_ln226_reg_1250                                            |  11|   0|   11|          0|
+    |ap_CS_fsm                                                     |  14|   0|   14|          0|
+    |ap_done_reg                                                   |   1|   0|    1|          0|
+    |cmp82_reg_1174                                                |   1|   0|    1|          0|
+    |delayed_rgb_V_fu_184                                          |  24|   0|   24|          0|
+    |edge_V_1_reg_1224                                             |   8|   0|    8|          0|
+    |edge_V_reg_1275                                               |   8|   0|    8|          0|
+    |edge_threshold_V_1_reg_1113                                   |   8|   0|    8|          0|
+    |grp_sobel_core_Pipeline_VITIS_LOOP_253_1_fu_211_ap_start_reg  |   1|   0|    1|          0|
+    |grp_sobel_core_Pipeline_VITIS_LOOP_263_2_fu_219_ap_start_reg  |   1|   0|    1|          0|
+    |grp_sobel_core_Pipeline_VITIS_LOOP_276_4_fu_229_ap_start_reg  |   1|   0|    1|          0|
+    |grp_sobel_core_Pipeline_VITIS_LOOP_318_5_fu_256_ap_start_reg  |   1|   0|    1|          0|
+    |gx_V_10_reg_1201                                              |  11|   0|   11|          0|
+    |gx_V_7_reg_1255                                               |  11|   0|   11|          0|
+    |gy_V_10_reg_1206                                              |  11|   0|   11|          0|
+    |gy_V_7_reg_1260                                               |  11|   0|   11|          0|
+    |icmp_ln1031_1_reg_1229                                        |   1|   0|    1|          0|
+    |icmp_ln1031_reg_1280                                          |   1|   0|    1|          0|
+    |odd_reg_1164                                                  |   1|   0|    1|          0|
+    |p_Result_s_reg_1105                                           |   1|   0|    1|          0|
+    |reg_297                                                       |   8|   0|    8|          0|
+    |reg_303                                                       |   8|   0|    8|          0|
+    |reg_309                                                       |   8|   0|    8|          0|
+    |reg_315                                                       |  24|   0|   24|          0|
+    |row_2_reg_1159                                                |  10|   0|   10|          0|
+    |row_fu_188                                                    |  10|   0|   10|          0|
+    |start_once_reg                                                |   1|   0|    1|          0|
+    |sub_ln225_2_reg_1245                                          |  10|   0|   10|          0|
+    |tmp_reg_1101                                                  |   1|   0|    1|          0|
+    |trunc_ln186_3_reg_1270                                        |   8|   0|    8|          0|
+    |trunc_ln186_4_reg_1211                                        |   8|   0|    8|          0|
+    |trunc_ln186_5_reg_1216                                        |   8|   0|    8|          0|
+    |trunc_ln186_reg_1265                                          |   8|   0|    8|          0|
+    |w0c_V_fu_172                                                  |   8|   0|    8|          0|
+    |w1c_V_fu_176                                                  |   8|   0|    8|          0|
+    |w2c_V_fu_180                                                  |   8|   0|    8|          0|
+    |wrB_reg_1169                                                  |   1|   0|    1|          0|
+    |zext_ln225_5_reg_1240                                         |  10|   0|   11|          1|
+    +--------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                         | 295|   0|  296|          1|
+    +--------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------------+-----+-----+------------+---------------+--------------+
+|           RTL Ports          | Dir | Bits|  Protocol  | Source Object |    C Type    |
++------------------------------+-----+-----+------------+---------------+--------------+
+|ap_clk                        |   in|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|ap_rst                        |   in|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|ap_start                      |   in|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|start_full_n                  |   in|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|ap_done                       |  out|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|ap_continue                   |   in|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|ap_idle                       |  out|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|ap_ready                      |  out|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|start_out                     |  out|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|start_write                   |  out|    1|  ap_ctrl_hs|     sobel_core|  return value|
+|dehazed175_dout               |   in|   24|     ap_fifo|     dehazed175|       pointer|
+|dehazed175_num_data_valid     |   in|    7|     ap_fifo|     dehazed175|       pointer|
+|dehazed175_fifo_cap           |   in|    7|     ap_fifo|     dehazed175|       pointer|
+|dehazed175_empty_n            |   in|    1|     ap_fifo|     dehazed175|       pointer|
+|dehazed175_read               |  out|    1|     ap_fifo|     dehazed175|       pointer|
+|processed176_din              |  out|   24|     ap_fifo|   processed176|       pointer|
+|processed176_num_data_valid   |   in|    7|     ap_fifo|   processed176|       pointer|
+|processed176_fifo_cap         |   in|    7|     ap_fifo|   processed176|       pointer|
+|processed176_full_n           |   in|    1|     ap_fifo|   processed176|       pointer|
+|processed176_write            |  out|    1|     ap_fifo|   processed176|       pointer|
+|ctrl_reg_dout                 |   in|   32|     ap_fifo|       ctrl_reg|       pointer|
+|ctrl_reg_num_data_valid       |   in|    2|     ap_fifo|       ctrl_reg|       pointer|
+|ctrl_reg_fifo_cap             |   in|    2|     ap_fifo|       ctrl_reg|       pointer|
+|ctrl_reg_empty_n              |   in|    1|     ap_fifo|       ctrl_reg|       pointer|
+|ctrl_reg_read                 |  out|    1|     ap_fifo|       ctrl_reg|       pointer|
+|threshold_reg_dout            |   in|   32|     ap_fifo|  threshold_reg|       pointer|
+|threshold_reg_num_data_valid  |   in|    2|     ap_fifo|  threshold_reg|       pointer|
+|threshold_reg_fifo_cap        |   in|    2|     ap_fifo|  threshold_reg|       pointer|
+|threshold_reg_empty_n         |   in|    1|     ap_fifo|  threshold_reg|       pointer|
+|threshold_reg_read            |  out|    1|     ap_fifo|  threshold_reg|       pointer|
++------------------------------+-----+-----+------------+---------------+--------------+
+

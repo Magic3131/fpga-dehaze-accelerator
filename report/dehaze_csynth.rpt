@@ -1,0 +1,168 @@
+
+
+================================================================
+== Vitis HLS Report for 'dehaze_core'
+================================================================
+* Date:           Sat Oct 24 22:52:43 2026
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        dehaze_ip
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.300 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+--------+--------+----------+
+    |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline |
+    |   min   |   max   |    min   |    max   |   min  |   max  |   Type   |
+    +---------+---------+----------+----------+--------+--------+----------+
+    |   921610|   923609|  9.216 ms|  9.236 ms|  921606|  923609|  dataflow|
+    +---------+---------+----------+----------+--------+--------+----------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------+----------------+---------+---------+----------+----------+--------+--------+---------+
+        |                   |                |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline|
+        |      Instance     |     Module     |   min   |   max   |    min   |    max   |   min  |   max  |   Type  |
+        +-------------------+----------------+---------+---------+----------+----------+--------+--------+---------+
+        |entry_proc_U0      |entry_proc      |        0|        0|      0 ns|      0 ns|       0|       0|       no|
+        |dark_window_U0     |dark_window     |   921603|   923608|  9.216 ms|  9.236 ms|  921603|  923608|       no|
+        |restore_stream_U0  |restore_stream  |   921605|   921645|  9.216 ms|  9.216 ms|  921605|  921645|       no|
+        +-------------------+----------------+---------+---------+----------+----------+--------+--------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|      2|    -|
+|FIFO             |        -|    -|     396|    323|    -|
+|Instance         |        8|    8|    2229|   3364|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|      9|    -|
+|Register         |        -|    -|       1|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        8|    8|    2626|   3698|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        2|    3|       2|      6|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------+----------------+---------+----+------+------+-----+
+    |      Instance     |     Module     | BRAM_18K| DSP|  FF  |  LUT | URAM|
+    +-------------------+----------------+---------+----+------+------+-----+
+    |dark_window_U0     |dark_window     |        6|   0|  1022|  1158|    0|
+    |entry_proc_U0      |entry_proc      |        0|   0|    35|    74|    0|
+    |restore_stream_U0  |restore_stream  |        2|   8|  1172|  2132|    0|
+    +-------------------+----------------+---------+----+------+------+-----+
+    |Total              |                |        8|   8|  2229|  3364|    0|
+    +-------------------+----------------+---------+----+------+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +-------------+---------+----+----+-----+------+-----+---------+
+    |     Name    | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
+    +-------------+---------+----+----+-----+------+-----+---------+
+    |ctrl_c_U     |        0|  99|   0|    -|     2|   32|       64|
+    |p_channel_U  |        0|  99|   0|    -|     2|   32|       64|
+    |params_c_U   |        0|  99|   0|    -|     3|   24|       72|
+    |window_U     |        0|  99|   0|    -|    64|   32|     2048|
+    +-------------+---------+----+----+-----+------+-----+---------+
+    |Total        |        0| 396|   0|    0|    71|  120|     2248|
+    +-------------+---------+----+----+-----+------+-----+---------+
+
+    * Expression: 
+    +--------------+----------+----+---+----+------------+------------+
+    | Variable Name| Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------+----------+----+---+----+------------+------------+
+    |ap_idle       |       and|   0|  0|   2|           1|           1|
+    +--------------+----------+----+---+----+------------+------------+
+    |Total         |          |   0|  0|   2|           1|           1|
+    +--------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------+----+-----------+-----+-----------+
+    |    Name    | LUT| Input Size| Bits| Total Bits|
+    +------------+----+-----------+-----+-----------+
+    |real_start  |   9|          2|    1|          2|
+    +------------+----+-----------+-----+-----------+
+    |Total       |   9|          2|    1|          2|
+    +------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------+---+----+-----+-----------+
+    |      Name      | FF| LUT| Bits| Const Bits|
+    +----------------+---+----+-----+-----------+
+    |start_once_reg  |  1|   0|    1|          0|
+    +----------------+---+----+-----+-----------+
+    |Total           |  1|   0|    1|          0|
+    +----------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++------------------------+-----+-----+------------+-----------------+--------------+
+|        RTL Ports       | Dir | Bits|  Protocol  |  Source Object  |    C Type    |
++------------------------+-----+-----+------------+-----------------+--------------+
+|ap_start                |   in|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|start_full_n            |   in|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|start_out               |  out|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|start_write             |  out|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|ap_clk                  |   in|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|ap_rst                  |   in|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|ap_done                 |  out|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|ap_ready                |  out|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|ap_idle                 |  out|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|ap_continue             |   in|    1|  ap_ctrl_hs|      dehaze_core|  return value|
+|rgb_input174_dout       |   in|   24|     ap_fifo|     rgb_input174|       pointer|
+|rgb_input174_empty_n    |   in|    1|     ap_fifo|     rgb_input174|       pointer|
+|rgb_input174_read       |  out|    1|     ap_fifo|     rgb_input174|       pointer|
+|dehazed175_din          |  out|   24|     ap_fifo|       dehazed175|       pointer|
+|dehazed175_full_n       |   in|    1|     ap_fifo|       dehazed175|       pointer|
+|dehazed175_write        |  out|    1|     ap_fifo|       dehazed175|       pointer|
+|ctrl_dout               |   in|   32|     ap_fifo|             ctrl|       pointer|
+|ctrl_empty_n            |   in|    1|     ap_fifo|             ctrl|       pointer|
+|ctrl_read               |  out|    1|     ap_fifo|             ctrl|       pointer|
+|params_dout             |   in|   32|     ap_fifo|           params|       pointer|
+|params_empty_n          |   in|    1|     ap_fifo|           params|       pointer|
+|params_read             |  out|    1|     ap_fifo|           params|       pointer|
+|ctrl_reg_c_din          |  out|   32|     ap_fifo|       ctrl_reg_c|       pointer|
+|ctrl_reg_c_full_n       |   in|    1|     ap_fifo|       ctrl_reg_c|       pointer|
+|ctrl_reg_c_write        |  out|    1|     ap_fifo|       ctrl_reg_c|       pointer|
+|threshold_reg_c_din     |  out|   32|     ap_fifo|  threshold_reg_c|       pointer|
+|threshold_reg_c_full_n  |   in|    1|     ap_fifo|  threshold_reg_c|       pointer|
+|threshold_reg_c_write   |  out|    1|     ap_fifo|  threshold_reg_c|       pointer|
++------------------------+-----+-----+------------+-----------------+--------------+
+

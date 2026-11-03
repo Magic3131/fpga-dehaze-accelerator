@@ -1,0 +1,193 @@
+
+
+================================================================
+== Vitis HLS Report for 'dehaze'
+================================================================
+* Date:           Sat Oct 24 22:52:47 2026
+
+* Version:        2022.2 (Build 3670227 on Oct 13 2022)
+* Project:        dehaze_ip
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  7.300 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+--------+--------+----------+
+    |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline |
+    |   min   |   max   |    min   |    max   |   min  |   max  |   Type   |
+    +---------+---------+----------+----------+--------+--------+----------+
+    |   931125|   934980|  9.311 ms|  9.350 ms|  921606|  934975|  dataflow|
+    +---------+---------+----------+----------+--------+--------+----------+
+
+    + Detail: 
+        * Instance: 
+        +--------------------------------+-----------------------------+---------+---------+----------+----------+--------+--------+----------+
+        |                                |                             |  Latency (cycles) |  Latency (absolute) |     Interval    | Pipeline |
+        |            Instance            |            Module           |   min   |   max   |    min   |    max   |   min  |   max  |   Type   |
+        +--------------------------------+-----------------------------+---------+---------+----------+----------+--------+--------+----------+
+        |Loop_VITIS_LOOP_372_1_proc5_U0  |Loop_VITIS_LOOP_372_1_proc5  |   921602|   921602|  9.216 ms|  9.216 ms|  921602|  921602|        no|
+        |entry_proc9_U0                  |entry_proc9                  |        0|        0|      0 ns|      0 ns|       0|       0|        no|
+        |dehaze_core_U0                  |dehaze_core                  |   921610|   923609|  9.216 ms|  9.236 ms|  921606|  923609|  dataflow|
+        |sobel_core_U0                   |sobel_core                   |   921604|   934974|  9.216 ms|  9.350 ms|  921604|  934974|        no|
+        |Loop_VITIS_LOOP_379_2_proc6_U0  |Loop_VITIS_LOOP_379_2_proc6  |   921603|   921603|  9.216 ms|  9.216 ms|  921603|  921603|        no|
+        +--------------------------------+-----------------------------+---------+---------+----------+----------+--------+--------+----------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|     12|    -|
+|FIFO             |        -|    -|     693|    629|    -|
+|Instance         |       13|   10|    4414|   6729|    0|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       -|     18|    -|
+|Register         |        -|    -|       2|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |       13|   10|    5109|   7388|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        4|    4|       4|     13|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------+-----------------------------+---------+----+------+------+-----+
+    |            Instance            |            Module           | BRAM_18K| DSP|  FF  |  LUT | URAM|
+    +--------------------------------+-----------------------------+---------+----+------+------+-----+
+    |CTRL_s_axi_U                    |CTRL_s_axi                   |        0|   0|   112|   168|    0|
+    |Loop_VITIS_LOOP_372_1_proc5_U0  |Loop_VITIS_LOOP_372_1_proc5  |        0|   0|    47|   103|    0|
+    |Loop_VITIS_LOOP_379_2_proc6_U0  |Loop_VITIS_LOOP_379_2_proc6  |        0|   0|    47|   209|    0|
+    |dehaze_core_U0                  |dehaze_core                  |        8|   8|  2626|  3698|    0|
+    |entry_proc9_U0                  |entry_proc9                  |        0|   0|     3|    38|    0|
+    |sobel_core_U0                   |sobel_core                   |        5|   2|  1579|  2513|    0|
+    +--------------------------------+-----------------------------+---------+----+------+------+-----+
+    |Total                           |                             |       13|  10|  4414|  6729|    0|
+    +--------------------------------+-----------------------------+---------+----+------+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +---------------------+---------+----+----+-----+------+-----+---------+
+    |         Name        | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
+    +---------------------+---------+----+----+-----+------+-----+---------+
+    |ctrl_reg_c14_U       |        0|  99|   0|    -|     3|   32|       96|
+    |ctrl_reg_c_U         |        0|  99|   0|    -|     2|   32|       64|
+    |dehazed_U            |        0|  99|   0|    -|    64|   24|     1536|
+    |processed_U          |        0|  99|   0|    -|    64|   24|     1536|
+    |rgb_input_U          |        0|  99|   0|    -|    64|   24|     1536|
+    |threshold_reg_c15_U  |        0|  99|   0|    -|     3|   32|       96|
+    |threshold_reg_c_U    |        0|  99|   0|    -|     2|   32|       64|
+    +---------------------+---------+----+----+-----+------+-----+---------+
+    |Total                |        0| 693|   0|    0|   202|  200|     4928|
+    +---------------------+---------+----+----+-----+------+-----+---------+
+
+    * Expression: 
+    +-------------------------------------------------+----------+----+---+----+------------+------------+
+    |                  Variable Name                  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-------------------------------------------------+----------+----+---+----+------------+------------+
+    |Loop_VITIS_LOOP_372_1_proc5_U0_ap_start          |       and|   0|  0|   2|           1|           1|
+    |ap_idle                                          |       and|   0|  0|   2|           1|           1|
+    |ap_sync_ready                                    |       and|   0|  0|   2|           1|           1|
+    |entry_proc9_U0_ap_start                          |       and|   0|  0|   2|           1|           1|
+    |ap_sync_Loop_VITIS_LOOP_372_1_proc5_U0_ap_ready  |        or|   0|  0|   2|           1|           1|
+    |ap_sync_entry_proc9_U0_ap_ready                  |        or|   0|  0|   2|           1|           1|
+    +-------------------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                            |          |   0|  0|  12|           6|           6|
+    +-------------------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-----------------------------------------------------+----+-----------+-----+-----------+
+    |                         Name                        | LUT| Input Size| Bits| Total Bits|
+    +-----------------------------------------------------+----+-----------+-----+-----------+
+    |ap_sync_reg_Loop_VITIS_LOOP_372_1_proc5_U0_ap_ready  |   9|          2|    1|          2|
+    |ap_sync_reg_entry_proc9_U0_ap_ready                  |   9|          2|    1|          2|
+    +-----------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                                |  18|          4|    2|          4|
+    +-----------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------------------------+---+----+-----+-----------+
+    |                         Name                        | FF| LUT| Bits| Const Bits|
+    +-----------------------------------------------------+---+----+-----+-----------+
+    |ap_sync_reg_Loop_VITIS_LOOP_372_1_proc5_U0_ap_ready  |  1|   0|    1|          0|
+    |ap_sync_reg_entry_proc9_U0_ap_ready                  |  1|   0|    1|          0|
+    +-----------------------------------------------------+---+----+-----+-----------+
+    |Total                                                |  2|   0|    2|          0|
+    +-----------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------+-----+-----+------------+---------------------+--------------+
+|      RTL Ports     | Dir | Bits|  Protocol  |    Source Object    |    C Type    |
++--------------------+-----+-----+------------+---------------------+--------------+
+|s_axi_CTRL_AWVALID  |   in|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_AWREADY  |  out|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_AWADDR   |   in|    5|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_WVALID   |   in|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_WREADY   |  out|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_WDATA    |   in|   32|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_WSTRB    |   in|    4|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_ARVALID  |   in|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_ARREADY  |  out|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_ARADDR   |   in|    5|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_RVALID   |  out|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_RREADY   |   in|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_RDATA    |  out|   32|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_RRESP    |  out|    2|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_BVALID   |  out|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_BREADY   |   in|    1|       s_axi|                 CTRL|        scalar|
+|s_axi_CTRL_BRESP    |  out|    2|       s_axi|                 CTRL|        scalar|
+|ap_clk              |   in|    1|  ap_ctrl_hs|               dehaze|  return value|
+|ap_rst_n            |   in|    1|  ap_ctrl_hs|               dehaze|  return value|
+|interrupt           |  out|    1|  ap_ctrl_hs|               dehaze|  return value|
+|in_stream_TDATA     |   in|   24|        axis|   in_stream_V_data_V|       pointer|
+|in_stream_TKEEP     |   in|    3|        axis|   in_stream_V_keep_V|       pointer|
+|in_stream_TSTRB     |   in|    3|        axis|   in_stream_V_strb_V|       pointer|
+|in_stream_TUSER     |   in|    1|        axis|   in_stream_V_user_V|       pointer|
+|in_stream_TLAST     |   in|    1|        axis|   in_stream_V_last_V|       pointer|
+|in_stream_TID       |   in|    1|        axis|     in_stream_V_id_V|       pointer|
+|in_stream_TDEST     |   in|    1|        axis|   in_stream_V_dest_V|       pointer|
+|in_stream_TVALID    |   in|    1|        axis|   in_stream_V_dest_V|       pointer|
+|in_stream_TREADY    |  out|    1|        axis|   in_stream_V_dest_V|       pointer|
+|out_stream_TDATA    |  out|   24|        axis|  out_stream_V_data_V|       pointer|
+|out_stream_TKEEP    |  out|    3|        axis|  out_stream_V_keep_V|       pointer|
+|out_stream_TSTRB    |  out|    3|        axis|  out_stream_V_strb_V|       pointer|
+|out_stream_TUSER    |  out|    1|        axis|  out_stream_V_user_V|       pointer|
+|out_stream_TLAST    |  out|    1|        axis|  out_stream_V_last_V|       pointer|
+|out_stream_TID      |  out|    1|        axis|    out_stream_V_id_V|       pointer|
+|out_stream_TDEST    |  out|    1|        axis|  out_stream_V_dest_V|       pointer|
+|out_stream_TVALID   |  out|    1|        axis|  out_stream_V_dest_V|       pointer|
+|out_stream_TREADY   |   in|    1|        axis|  out_stream_V_dest_V|       pointer|
++--------------------+-----+-----+------------+---------------------+--------------+
+
